@@ -1,0 +1,9 @@
+DELIMITER $$
+DROP trigger IF EXISTS del $$
+CREATE trigger del
+after delete on naruto
+for each row
+begin
+delete from naruto_loc where link like '567%';
+END $$
+DELIMITER ;

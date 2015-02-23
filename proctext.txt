@@ -1,0 +1,28 @@
+//procedure
+DELIMITER $$
+DROP PROCEDURE IF EXISTS UPDATE1 $$
+CREATE PROCEDURE UPDATE1(title varchar(50),
+author varchar(50),
+reading varchar(50),
+date1 date,
+status varchar(50))
+BEGIN
+UPDATE MANGA_INFO SET title =title, 
+author=author,
+reading=reading,
+date1=date1,
+status=status
+WHERE TITLE=title;
+END $$
+DELIMITER ;
+
+//trigger
+DELIMITER $$
+DROP trigger IF EXISTS del $$
+CREATE trigger del
+after delete on naruto
+for each row
+begin
+delete from naruto_loc where link like '567%';
+END $$
+DELIMITER ;
